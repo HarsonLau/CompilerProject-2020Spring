@@ -11,8 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/test1.dir/kernels/kernel_case8.cc.o"
   "CMakeFiles/test1.dir/kernels/kernel_case9.cc.o"
   "CMakeFiles/test1.dir/kernels/kernel_example.cc.o"
-  "test1.pdb"
-  "test1"
+  "../bin/test1.pdb"
+  "../bin/test1"
 )
 
 # Per-language clean rules from dependency scanning.

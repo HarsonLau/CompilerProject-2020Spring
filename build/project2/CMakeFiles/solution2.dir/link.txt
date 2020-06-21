@@ -1,1 +1,1 @@
-/usr/bin/c++  -std=c++11 -faligned-new -O2 -Wall -fPIC   -rdynamic CMakeFiles/solution2.dir/solution/solution2.cc.o  -o solution2 -Wl,-rpath,/home/harson/p2/build ../libboost.so -ldl ../lib/libjsoncpp.a 
+/usr/bin/c++  -std=c++11 -faligned-new -O2 -Wall -fPIC   -rdynamic CMakeFiles/solution2.dir/solution/solution2.cc.o  -o ../bin/solution2 -Wl,-rpath,/home/harson/p2/build/lib ../lib/libboost.so -ldl ../lib/libjsoncpp.a 

@@ -55,7 +55,7 @@ include project1/CMakeFiles/clean_run.dir/progress.make
 
 project1/CMakeFiles/clean_run:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/harson/p2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "run generated clean in /home/harson/p2/project1"
-	cd /home/harson/p2/project1 && /home/harson/p2/build/project1/cleanf
+	cd /home/harson/p2/project1 && /home/harson/p2/build/bin/cleanf
 
 clean_run: project1/CMakeFiles/clean_run
 clean_run: project1/CMakeFiles/clean_run.dir/build.make

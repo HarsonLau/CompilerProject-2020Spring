@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/cleanf.dir/clean/clean.cc.o"
-  "cleanf.pdb"
-  "cleanf"
+  "../bin/cleanf.pdb"
+  "../bin/cleanf"
 )
 
 # Per-language clean rules from dependency scanning.

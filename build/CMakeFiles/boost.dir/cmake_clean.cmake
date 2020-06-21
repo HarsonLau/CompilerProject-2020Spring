@@ -3,8 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/boost.dir/src/IRMutator.cc.o"
   "CMakeFiles/boost.dir/src/IRPrinter.cc.o"
   "CMakeFiles/boost.dir/src/IRVisitor.cc.o"
-  "libboost.pdb"
-  "libboost.so"
+  "bin/libboost.pdb"
+  "lib/libboost.so"
 )
 
 # Per-language clean rules from dependency scanning.

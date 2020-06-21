@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/gemm.dir/gemm.cc.o"
-  "gemm.pdb"
-  "gemm"
+  "../bin/gemm.pdb"
+  "../bin/gemm"
 )
 
 # Per-language clean rules from dependency scanning.

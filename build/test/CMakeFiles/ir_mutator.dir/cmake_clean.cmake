@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ir_mutator.dir/ir_mutator.cc.o"
-  "ir_mutator.pdb"
-  "ir_mutator"
+  "../bin/ir_mutator.pdb"
+  "../bin/ir_mutator"
 )
 
 # Per-language clean rules from dependency scanning.

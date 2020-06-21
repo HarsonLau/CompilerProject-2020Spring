@@ -55,7 +55,7 @@ include project2/CMakeFiles/solution_run2.dir/progress.make
 
 project2/CMakeFiles/solution_run2:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/harson/p2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "run generated solution in /home/harson/p2/project2"
-	cd /home/harson/p2/project2 && /home/harson/p2/build/project2/solution2
+	cd /home/harson/p2/project2 && /home/harson/p2/build/bin/solution2
 
 solution_run2: project2/CMakeFiles/solution_run2
 solution_run2: project2/CMakeFiles/solution_run2.dir/build.make
