@@ -1,0 +1,7 @@
+{
+"name":"grad_case10",
+"ins":["dA"],
+"outs":["dB"],
+"data_type":"float",
+"kernel":"dB[i][j]=dA[i][j];"
+}

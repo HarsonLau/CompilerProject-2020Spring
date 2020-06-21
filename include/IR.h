@@ -68,7 +68,7 @@ class Ref {
     template<typename U, typename std::enable_if<std::is_base_of<T, U>::value>::type* = nullptr>
     Ref(std::shared_ptr<U> _ptr) : ptr(_ptr) {}
 
-    bool defined() const { return ptr != nullptr; }
+    bool defined() { return ptr != nullptr; }
 
     T *get() const { return ptr.get(); }
 
@@ -378,11 +378,6 @@ class Expr : public Ref<const ExprNode> {
 
     Expr(double value) :
         Ref<const ExprNode>(FloatImm::make(Type::float_scalar(64), value)) {}
-
-    Expr &operator=(const Expr &other) {
-        this->set_ptr(other.real_ptr());
-        return *this;
-    }
 
     IRNodeType node_type() const {
         return this->get()->node_type();
@@ -744,20 +739,23 @@ class Var : public ExprNode, public std::enable_shared_from_this<Var> {
  */ 
 class Dom : public ExprNode, public std::enable_shared_from_this<Dom> {
  public:
+	
     Expr begin;
     Expr extent;
+	std::string name;
 
-    Dom(Type _type, Expr _begin, Expr _extent) : ExprNode(_type, IRNodeType::Dom), begin(_begin), extent(_extent) {}
+    Dom(Type _type, Expr _begin, Expr _extent, const std::string &_name) : ExprNode(_type, IRNodeType::Dom), begin(_begin), extent(_extent), name(_name) {}
 
     Expr mutate_expr(IRMutator *mutator) const;
     void visit_node(IRVisitor *visitor) const;
     
-    static Expr make(Type t, Expr _begin, Expr _extent) {
-        return std::make_shared<const Dom>(t, _begin, _extent);
+    static Expr make(Type t, Expr _begin, Expr _extent, const std::string& _name) {
+        return std::make_shared<const Dom>(t, _begin, _extent, _name);
     }
 
     static const IRNodeType node_type_ = IRNodeType::Dom;
 };
+
 
 
 enum class IndexType : uint8_t {
@@ -887,23 +885,24 @@ enum class KernelType : uint8_t {
 
 class Kernel : public GroupNode, public std::enable_shared_from_this<Kernel> {
  public:
+    std::string data_type;
     std::string name;
     std::vector<Expr> inputs;
     std::vector<Expr> outputs;
     std::vector<Stmt> stmt_list;
-    KernelType kernel_type;
+ 
 
-    Kernel(const std::string &_name, const std::vector<Expr> &_inputs,
-        const std::vector<Expr> &_outputs, const std::vector<Stmt> &_stmt_list, KernelType _kernel_type) :
-        GroupNode(IRNodeType::Kernel), name(_name), inputs(_inputs), outputs(_outputs),
-        stmt_list(_stmt_list), kernel_type(_kernel_type) {}
+    Kernel(const std::string& _data_type, const std::string &_name, const std::vector<Expr> &_inputs,
+        const std::vector<Expr> &_outputs, const std::vector<Stmt> &_stmt_list) :
+        GroupNode(IRNodeType::Kernel), data_type(_data_type), name(_name), inputs(_inputs), outputs(_outputs),
+        stmt_list(_stmt_list) {}
 
     Group mutate_group(IRMutator *mutator) const;
     void visit_node(IRVisitor *visitor) const;
     
-    static Group make(const std::string &_name, const std::vector<Expr> &_inputs,
-        const std::vector<Expr> &_outputs, const std::vector<Stmt> &_stmt_list, KernelType _kernel_type) {
-        return std::make_shared<const Kernel>(_name, _inputs, _outputs, _stmt_list, _kernel_type);
+    static Group make(const std::string& _data_type, const std::string &_name, const std::vector<Expr> &_inputs,
+        const std::vector<Expr> &_outputs, const std::vector<Stmt> &_stmt_list) {
+        return std::make_shared<const Kernel>(_data_type, _name, _inputs, _outputs, _stmt_list);
     }
 
     static const IRNodeType node_type_ = IRNodeType::Kernel;

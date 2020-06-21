@@ -132,7 +132,6 @@ void IRVisitor::visit(Ref<const LoopNest> op) {
 void IRVisitor::visit(Ref<const IfThenElse> op) {
     (op->cond).visit_expr(this);
     (op->true_case).visit_stmt(this);
-    (op->false_case).visit_stmt(this);
     return;
 }
 

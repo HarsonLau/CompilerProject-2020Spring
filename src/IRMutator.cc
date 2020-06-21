@@ -125,7 +125,7 @@ Expr IRMutator::visit(Ref<const Var> op) {
 Expr IRMutator::visit(Ref<const Dom> op) {
     Expr new_begin = mutate(op->begin);
     Expr new_extent = mutate(op->extent);
-    return Dom::make(op->type(), new_begin, new_extent);
+    return Dom::make(op->type(), new_begin, new_extent, op->name);
 }
 
 
@@ -151,8 +151,7 @@ Stmt IRMutator::visit(Ref<const LoopNest> op) {
 Stmt IRMutator::visit(Ref<const IfThenElse> op) {
     Expr new_cond = mutate(op->cond);
     Stmt new_true_case = mutate(op->true_case);
-    Stmt new_false_case = mutate(op->false_case);
-    return IfThenElse::make(new_cond, new_true_case, new_false_case);
+    return IfThenElse::make(new_cond, new_true_case, {});
 }
 
 
@@ -176,7 +175,7 @@ Group IRMutator::visit(Ref<const Kernel> op) {
     for (auto stmt : op->stmt_list) {
         new_stmt_list.push_back(mutate(stmt));
     }
-    return Kernel::make(op->name, new_inputs, new_outputs, new_stmt_list, op->kernel_type);
+    return Kernel::make(op->data_type, op->name, new_inputs, new_outputs, new_stmt_list);
 }
 
 
