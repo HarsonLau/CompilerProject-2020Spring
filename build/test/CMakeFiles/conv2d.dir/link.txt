@@ -1,1 +1,0 @@
-/usr/bin/c++  -std=c++11 -faligned-new -O2 -Wall -fPIC   -rdynamic CMakeFiles/conv2d.dir/conv2d.cc.o  -o ../bin/conv2d -Wl,-rpath,/home/harson/p2/build/lib ../lib/libboost.so -ldl ../lib/libjsoncpp.a 
